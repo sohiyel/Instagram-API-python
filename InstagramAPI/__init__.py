@@ -724,9 +724,11 @@ class InstagramAPI:
 
             for item in temp["users"]:
                 followers.append(item)
-
-            if temp["big_list"] == False:
-                return followers            
+            if(temp.has_key('big_list')):
+                if temp["big_list"] == False:
+                    return followers            
+            else:
+                return temp
             next_max_id = temp["next_max_id"]         
 
     def getTotalFollowings(self,usernameId):
@@ -739,8 +741,11 @@ class InstagramAPI:
             for item in temp["users"]:
                 followers.append(item)
 
-            if temp["big_list"] == False:
-                return followers            
+            if(temp.has_key('big_list')):
+                if temp["big_list"] == False:
+                    return followers            
+            else:
+                return temp           
             next_max_id = temp["next_max_id"] 
 
     def getTotalUserFeed(self, usernameId, minTimestamp = None):
